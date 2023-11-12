@@ -1,0 +1,95 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+header {
+    width: 100%;
+    background-color: #007acc;
+    color: white;
+    padding: 15px 0% 10px;
+    display: flex;
+    justify-content: space-between;/*水平方向に端をつけて等間隔に配置*/
+    align-items: center; /*垂直方向の真ん中に配置*/
+    position:fixed;
+    top:0;
+}
+  
+.header-left {
+    /* flex: 1; この要素が悪さをしていた*/ 
+    justify-content: flex-start;
+    margin-right: 3px; /* 左寄せのためのマージン追加 */
+}
+  
+.header-right {
+    /* flex:1; */
+    margin-top: 1px; /* マージン微調整 */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: self-start;
+}
+.right-group{
+    display:flex;
+}
+
+.popupforget {
+    display: flex;
+}
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    white-space:nowrap;
+    overflow: auto;
+    max-width: 400px;
+  }
+  
+  th {
+    background-color: #007acc;
+    color: white;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #007acc;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  button {
+    background-color: #007acc;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005580;
+  }
+  
+  .detail-button {
+    white-space: nowrap;
+  }
+  
+.user_mail {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+  /* Add more styles for the Edit / Create Item section as needed */
