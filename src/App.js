@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { onAuthStateChanged } from 'firebase/auth';
+import { fireAuth } from "./firebase.ts";
+import { Table } from "./Table.jsx";
+import { Top } from "./Toppage.jsx";
+import { SignUpPage } from "./SignUpPage.jsx";
+import { Element } from "./pages/Element.jsx";
+import { 
+  BrowserRouter as Router,
+  Routes,
+  Route,
+ } from 'react-router-dom';
 
-function App() {
+function App():JSX.Element{
+  // stateとしてログイン状態を管理する。ログインしていないときはnullになる。
+  const [loginUser,setLoginUser] = useState(fireAuth.currentUser);
+
+  // ログイン状態を監視して、stateをリアルタイムで更新する
+  onAuthStateChanged(fireAuth,user => {
+    setLoginUser(user);
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Top />} />
+          <Route path='/main' element={<Table />} />
+          <Route path='/signup' element={<SignUpPage/>}/>
+          <Route path='/main/element' element={<Element/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
