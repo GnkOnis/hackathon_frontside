@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { fireAuth } from "./firebase.ts";
 import { useNavigate } from "react-router-dom";
 import { PopupForGet } from "./table_component/PopupForGet";
+import { CategoryDropdown } from "./table_component/CategoryDropdown.jsx"
+import CurrDropdown, { currDropdown } from "./table_component/CurrDropdown.jsx";
 import "./css/Table.css"
 //import "./Main.css";
 
@@ -197,7 +199,7 @@ export function Table() {
                                     item.curr === 14 ? 'HTTP Server(Go)':
                                     item.curr === 15 ? 'RDBMS(MySQL)への接続':
                                     item.curr === 16 ? 'Unit Test(Go)':
-                                    item.curr === 17 ? 'フロントとバックの接':
+                                    item.curr === 17 ? 'フロントとバックの接続':
                                     item.curr === 18 ? 'CI':
                                     item.curr === 19 ? 'CD':
                                     item.curr === 20 ? '認証':
@@ -238,80 +240,84 @@ export function Table() {
                 </tbody>
             </table>
             {selectedItemId !== null ? (
-                <div>
-                    <h2>Edit Item : {getTitleById(data, selectedItemId)}</h2>
+                <div className="inputdata">
+                    <h2 className="upadatecontents">Edit Item : {getTitleById(data, selectedItemId)}</h2>
                     <label htmlFor="title">Title:</label>
-                    <input 
+                    <input className="upadateinput"
                     type = "text"
                     value = {newItem.title}
                     onChange={(e) => setNewItem({...newItem,title: e.target.value})}
                     />
-                    <label htmlFor="category">Category:</label>
-                    <input
+                    <CategoryDropdown 
+                    newItem={newItem}
+                    setNewItem={setNewItem}
+                    />
+                    {/* <label htmlFor="category">Category:</label>
+                    <input className="upadateinput"
                     type = "number"
                     value = {newItem.category}
                     onChange={(e) => setNewItem({...newItem,category: e.target.value})}
+                    /> */}
+                    <CurrDropdown
+                    newItem={newItem}
+                    setNewItem={setNewItem}
                     />
-                    <label htmlFor="curr">Curriculum:</label>
-                    <input
+                    {/* <label htmlFor="curr">Curriculum:</label>
+                    <input className="upadateinput"
                     type = "number"
                     value = {newItem.curr}
                     onChange={(e) => setNewItem({...newItem,curr: e.target.value})}
-                    />
+                    /> */}
                     <label htmlFor="link">Link:</label>
-                    <input
+                    <input className="upadateinput"
                     type = "text"
                     value = {newItem.link}
                     onChange={(e) => setNewItem({...newItem,link: e.target.value})}
                     />
                     <label htmlFor="name">Name:</label>
-                    <input
+                    <input className="upadateinput"
                     type = "text"
                     value = {newItem.name}
                     onChange={(e) => setNewItem({...newItem,name: e.target.value})}
                     />
-                    <button onClick={handleUpdateItem}>Save Changes</button>
+                    <button className="upadatecontents" onClick={handleUpdateItem}>Save Changes</button>
                 </div>
             ) : (
-                <div>
-                    <h2>Create New Item</h2>
+                <div className="inputdata">
+                    <h2 className="upadatecontents">Create New Item</h2>
                     <label htmlFor="title">Title:</label>
-                    <input 
+                    <input className="upadateinput"
                     type = "text"
                     value = {newItem.title}
                     onChange={(e) => setNewItem({...newItem,title: e.target.value})}
                     />
-                    <label htmlFor="category">Category:</label>
-                    <input
-                    type = "number"
-                    value = {newItem.category}
-                    onChange={(e) => setNewItem({...newItem,category: e.target.value})}
+                    <CategoryDropdown 
+                    newItem={newItem}
+                    setNewItem={setNewItem}
                     />
-                    <label htmlFor="curr">Curriculum:</label>
-                    <input
-                    type = "number"
-                    value = {newItem.curr}
-                    onChange={(e) => setNewItem({...newItem,curr: e.target.value})}
+                    <CurrDropdown
+                    newItem={newItem}
+                    setNewItem={setNewItem}
                     />
                     <label htmlFor="link">Link:</label>
-                    <input
+                    <input className="upadateinput"
                     type = "text"
                     value = {newItem.link}
                     onChange={(e) => setNewItem({...newItem,link: e.target.value})}
                     />
                     <label htmlFor="comment">Comment:</label>
-                    <input
+                    <input className="upadateinput"
                     type = "text"
                     value = {newItem.comment}
                     onChange={(e) => setNewItem({...newItem,comment: e.target.value})}
                     />
                     <label htmlFor="name">Name:</label>
-                    <input
+                    <input className="upadateinput"
                     type = "text"
                     value = {newItem.name}
                     onChange={(e) => setNewItem({...newItem,name: e.target.value})}
                     />
-                    <button onClick={handleCreateItem}>Create</button>
+                    <button className="upadatecontents" onClick={handleCreateItem}>Create</button>
                 </div>
             )}
         </div>

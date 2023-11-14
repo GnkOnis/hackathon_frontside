@@ -93,3 +93,27 @@ header {
     font-size: 12px;
 }
   /* Add more styles for the Edit / Create Item section as needed */
+
+.inputdata{
+  display: flex;
+  flex-wrap: nowrap;
+}
+.upadatecontents {
+  white-space: nowrap;
+}
+.upadateinput {
+  width: 200px;
+  height: 20px;
+}
+.dropdownbutton {
+  white-space: nowrap;
+  margin: 3px;
+  padding: 2px;
+  background-color: white;
+  color: black;
+  border: 0.1px solid;
+  border-radius: 0;
+}
+.dropdownbutton:hover {
+  background-color: rgb(191, 191, 191); /* ホバー時の背景色 */
+}
